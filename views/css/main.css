@@ -1,0 +1,121 @@
+/*------------------------------------*\
+    $MAIN-BLOCK
+\*------------------------------------*/
+html,
+body,
+.mySite,
+.mySite__homePage,
+.mySite__mainContent {
+  width: 100%;
+  height: 100%;
+}
+.mySite__homePage {
+  visibility: hidden;
+  display: none;
+}
+.mySite__mainContent {
+  /*visibility: hidden;*/
+}
+
+
+
+
+
+/*------------------------------------*\
+    $HEADER
+\*------------------------------------*/
+.mySite__mainContent--title {
+  text-align: center;
+  font-size: 4em;
+}
+
+
+
+
+
+/*------------------------------------*\
+    $NAVIGATION
+\*------------------------------------*/
+nav {
+  width: 100%;
+  height: 100%;
+  background-color: orange;
+  visibility: hidden;
+  display: none;
+}
+  .nav__list {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+    .nav__list__option {
+      list-style: none;
+      font-size: 3em;
+      margin-bottom: 30px;
+    }
+
+
+
+
+
+/*------------------------------------*\
+    $WORK-CONTENT
+\*------------------------------------*/
+.workContent {
+  width: 100%;
+  height: 100%;
+}
+  .workContent--children {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*border-bottom: 1px rgba(154, 154, 154, 0.73) solid;*/
+  }
+    .roulette {
+      width: 80%;
+      height: 80%;
+      background-color: rgba(247, 99, 99, 0.86);
+    }
+    h1 {
+      margin: 0;
+    }
+
+
+
+
+/*------------------------------------*\
+    $WORK-CONTENT-DETAIL
+\*------------------------------------*/
+.workContent--detail {
+  display: none;
+}
+
+
+
+
+/*------------------------------------*\
+    $LIFE-CONTENT
+\*------------------------------------*/
+.lifeContent {
+  display: none;
+}
+
+
+
+
+/*------------------------------------*\
+    $SOCIAL-MEDIA-CONTENT
+\*------------------------------------*/
+.socialMediaContent {
+  width: 100%;
+  height: 15%;
+  background-color: rgba(65, 76, 222, 1);
+}
