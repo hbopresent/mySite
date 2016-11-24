@@ -8,33 +8,56 @@
   </head>
   <body>
     <div class="mySite">
-      <div class="mySite__homePage">
+      <!-- Home Page -->
+      <div class="mySite__homePage" id="homePage">
         <p class="mySite__homePage__description">
           Hey guys, this is Franklin Hung.</br>
           I'm frontend developer for online gambling industry.</br>
           Check out more detail about me!!
         </p>
-        <input type="button" class="mySite__homePage__entrance" value="check"/>
+        <input type="button" class="mySite__homePage__entrance" value="check" id="entrance"/>
       </div>
-      <div class="mySite__mainContent">
-        <header>
-          <h1 class="mySite__mainContent--title">ThisIsTitle</h1>
+      <!-- main content of the website -->
+      <div class="mySite__mainContent" id="mainContent">
+        <header class="mySite__mainContent--header" id="mainHeader">
+          <h1 class="mainContentTitle">ThisIsTitle</h1>
         </header>
         <!-- navigation positioned in fixed -->
-        <nav>
+        <input type="button" class="mainNavButton" id="mainNavButton"/>
+        <nav class="mainNav" id="mainNav">
           <ul class="nav__list">
-            <li class="nav__list__option">Home</li>
-            <li class="nav__list__option">About</li>
-            <li class="nav__list__option">work</li>
-            <li class="nav__list__option">life</li>
+            <li class="nav__list__option" id="navHomePage">Home</li>
+            <li class="nav__list__option" id="navAboutPage">About</li>
+            <li class="nav__list__option" id="navWorkPage">work</li>
+            <li class="nav__list__option" id="navLifePage">life</li>
           </ul>
         </nav>
 
         <!-- detail about myself -->
-        <div class="aboutContent"></div>
+        <div class="aboutContent" id="aboutContent">
+          <div class="aboutContent__personalPic"></div>
+          <div class="aboutContent__skills">
+            <div class="clentSide">
+              <h3>Frontend</h3>
+              <ul class="skillList">
+                <li class="skillList__option">AAAAA</li>
+                <li class="skillList__option">BBBBB</li>
+                <li class="skillList__option">CCCCC</li>
+              </ul>
+            </div>
+            <div class="serverSide">
+              <h3>Backend</h3>
+              <ul class="skillList">
+                <li class="skillList__option">DDDDD</li>
+                <li class="skillList__option">EEEEE</li>
+                <li class="skillList__option">FFFFF</li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
         <!-- showcase of works -->
-        <div class="workContent">
+        <div class="workContent" id="workContent">
           <div class="workContent--children">
             <h1>XXXXX</h1>
             <div class="roulette"></div>
@@ -50,14 +73,56 @@
         </div>
 
         <!-- detail about works -->
-        <div class="workContent--detail"></div>
+        <div class="workContentDetail" id="workContentDetail">
+          <div class="workContentDetail__nav">
+            <ul class="projectList">
+              <li class="projectList__option">previous</li>
+              <li class="projectList__option">close</li>
+              <li class="projectList__option">next</li>
+            </ul>
+          </div>
+          <div class="workContentDetail__portfolio">
+            <div class="project--info">
+              <h3 class="project__titleName">Info</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+            <div class="project--feature">
+              <h3 class="project__titleName">Feature</h3>
+              <ul class="project__featureList">
+                <li>Lorem ipsum dolor sit amet</li>
+                <li>Lorem ipsum dolor sit amet</li>
+                <li>Lorem ipsum dolor sit amet</li>
+              </ul>
+            </div>
+            <div class="project--tech">
+              <h3 class="project__titleName">Tech</h3>
+              <ul class="project__techList">
+                <li>Lorem ipsum dolor sit amet</li>
+                <li>Lorem ipsum dolor sit amet</li>
+                <li>Lorem ipsum dolor sit amet</li>
+              </ul>
+            </div>
+            <div class="project--image">
+              <div class="project__image"></div>
+              <div class="project__image"></div>
+              <div class="project__image"></div>
+            </div>
+          </div>
+        </div>
 
         <!-- detail about my private life -->
-        <div class="lifeContent"></div>
+        <div class="lifeContent" id="lifeContent">
+
+        </div>
 
         <!-- get in touch by social media -->
         <div class="socialMediaContent"></div>
       </div>
     </div>
+
+    <script src="/views/js/main.js"></script>
   </body>
 </html>
