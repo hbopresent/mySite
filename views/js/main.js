@@ -1,5 +1,5 @@
 var mySite = (function(global) {
-  var mainNavButtonFlag = false;
+  // var mainNavButtonFlag = false;
 
   var homeObj = {
     enterToMainContent: function() {
@@ -12,9 +12,7 @@ var mySite = (function(global) {
     }
   };
 
-  var aboutObj = {
-
-  };
+  var aboutObj = {};
 
   var workObj = {
 
@@ -31,68 +29,73 @@ var mySite = (function(global) {
     var navLifePage   = document.getElementById("navLifePage");
     var entrance      = document.getElementById("entrance");
 
-    mainNavButton.addEventListener("click", openMenu);
-    navHomePage.addEventListener("click", goToHomePage);
-    navAboutPage.addEventListener("click", goToAboutPage);
-    navWorkPage.addEventListener("click", goToWorkPage);
-    navLifePage.addEventListener("click", goToLifePage);
+    mainNavButton.addEventListener("click", mainNavigation.openMenu);
+    navHomePage.addEventListener("click", mainNavigation.goToHomePage);
+    navAboutPage.addEventListener("click", mainNavigation.goToAboutPage);
+    navWorkPage.addEventListener("click", mainNavigation.goToWorkPage);
+    navLifePage.addEventListener("click", mainNavigation.goToLifePage);
     entrance.addEventListener("click", homeObj.enterToMainContent);
   }
 
-  // open main navigation
-  function openMenu() {
-    mainNavButtonFlag = !mainNavButtonFlag;
-    console.log("mainNavButtonFlag: " + mainNavButtonFlag);
-    if(mainNavButtonFlag) {
-      document.getElementById("mainNav").style.display = "block";
-      document.getElementById("mainContent").style.overflow = "hidden";
-    }
-    else {
+  var mainNavigation = {
+    mainNavButtonFlag: false,
+
+    openMenu: function() {
+      mainNavigation.mainNavButtonFlag = !mainNavigation.mainNavButtonFlag;
+      console.log("mainNavigation.mainNavButtonFlag: " + mainNavigation.mainNavButtonFlag);
+      if(mainNavigation.mainNavButtonFlag) {
+        document.getElementById("mainNav").style.display = "block";
+        document.getElementById("mainContent").style.overflow = "hidden";
+      }
+      else {
+        document.getElementById("mainNav").style.display = "none";
+        document.getElementById("mainContent").style.overflow = "";
+      }
+    },
+
+    closeAllPage: function() {
+      document.getElementById("aboutContent").style.display = "none";
+      document.getElementById("workContent").style.display = "none";
+      document.getElementById("lifeContent").style.display = "none";
       document.getElementById("mainNav").style.display = "none";
+      mainNavigation.mainNavButtonFlag = false;
+    },
+
+    goToHomePage: function() {
+      mainNavigation.closeAllPage();
+      document.getElementById("mainContent").style.display = "none";
+      document.getElementById("homePage").style.display = "block";
+    },
+
+    goToAboutPage: function() {
+      mainNavigation.closeAllPage();
+      document.getElementById("mainContent").style.display = "block";
       document.getElementById("mainContent").style.overflow = "";
+      document.getElementById("aboutContent").style.display = "block";
+    },
+
+    goToWorkPage: function() {
+      mainNavigation.closeAllPage();
+      document.getElementById("mainContent").style.display = "block";
+      document.getElementById("mainContent").style.overflow = "";
+      document.getElementById("workContent").style.display = "block";
+    },
+
+    goToLifePage: function() {
+      mainNavigation.closeAllPage();
+      document.getElementById("mainContent").style.display = "block";
+      document.getElementById("mainContent").style.overflow = "";
+      document.getElementById("lifeContent").style.display = "block";
     }
   }
 
-  function closeAllPage() {
-    document.getElementById("aboutContent").style.display = "none";
-    document.getElementById("workContent").style.display = "none";
-    document.getElementById("lifeContent").style.display = "none";
-    document.getElementById("mainNav").style.display = "none";
-    mainNavButtonFlag = false;
+  var initialize = function() {
+    settingHandlers();
   }
-
-  function goToHomePage() {
-    closeAllPage();
-    document.getElementById("mainContent").style.display = "none";
-    document.getElementById("homePage").style.display = "block";
-  }
-
-  function goToAboutPage() {
-    closeAllPage();
-    document.getElementById("mainContent").style.display = "block";
-    document.getElementById("mainContent").style.overflow = "";
-    document.getElementById("aboutContent").style.display = "block";
-  }
-
-  function goToWorkPage() {
-    closeAllPage();
-    document.getElementById("mainContent").style.display = "block";
-    document.getElementById("mainContent").style.overflow = "";
-    document.getElementById("workContent").style.display = "block";
-  }
-
-  function goToLifePage() {
-    closeAllPage();
-    document.getElementById("mainContent").style.display = "block";
-    document.getElementById("mainContent").style.overflow = "";
-    document.getElementById("lifeContent").style.display = "block";
-  }
-
 
   return {
-    aboutObj: aboutObj,
-    bindingHandlers: settingHandlers
+    init: initialize
   };
 }(window));
 
-window.onload = mySite.bindingHandlers;
+// window.onload = mySite.init;

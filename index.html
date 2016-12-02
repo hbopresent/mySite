@@ -10,12 +10,13 @@
     <div class="mySite">
       <!-- Home Page -->
       <div class="mySite__homePage" id="homePage">
-        <p class="mySite__homePage__description">
-          Hey guys, this is Franklin Hung.</br>
-          I'm frontend developer for online gambling industry.</br>
-          Check out more detail about me!!
-        </p>
-        <input type="button" class="mySite__homePage__entrance" value="check" id="entrance"/>
+        <div class="mySite__homePage__content">
+          <p class="homePageDescription">
+            Franklin Hung</br>
+            Frontend Developer
+          </p>
+          <input type="button" class="homePageEntrance" value="check" id="entrance"/>
+        </div>
       </div>
       <!-- main content of the website -->
       <div class="mySite__mainContent" id="mainContent">
@@ -35,10 +36,23 @@
 
         <!-- detail about myself -->
         <div class="aboutContent" id="aboutContent">
-          <div class="aboutContent__personalPic"></div>
+          <h1 class="aboutContent--title">About</h1>
+          <div class="aboutContent__personalInfo">
+            <div class="personalPic"></div>
+            <div class="personalMedia">
+              <div class="mediaItem personalMedia--facebook"></div>
+              <div class="mediaItem personalMedia--instagram"></div>
+              <div class="mediaItem personalMedia--linkedin"></div>
+              <div class="mediaItem personalMedia--github"></div>
+            </div>
+          </div>
+          <p class="aboutContent__introduction">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
           <div class="aboutContent__skills">
             <div class="clentSide">
-              <h3>Frontend</h3>
+              <h3>XXXXX</h3>
               <ul class="skillList">
                 <li class="skillList__option">AAAAA</li>
                 <li class="skillList__option">BBBBB</li>
@@ -46,7 +60,15 @@
               </ul>
             </div>
             <div class="serverSide">
-              <h3>Backend</h3>
+              <h3>XXXXX</h3>
+              <ul class="skillList">
+                <li class="skillList__option">DDDDD</li>
+                <li class="skillList__option">EEEEE</li>
+                <li class="skillList__option">FFFFF</li>
+              </ul>
+            </div>
+            <div class="serverSide">
+              <h3>XXXXX</h3>
               <ul class="skillList">
                 <li class="skillList__option">DDDDD</li>
                 <li class="skillList__option">EEEEE</li>
@@ -57,31 +79,60 @@
         </div>
 
         <!-- showcase of works -->
-        <div class="workContent" id="workContent">
-          <div class="workContent--children">
-            <h1>XXXXX</h1>
-            <div class="roulette"></div>
+        <div class="workContent--container">
+          <h1 class="workContent--title">Work</h1>
+          <div class="workContent--row" id="workContent">
+            <div class="workContent--column">
+              <div class="workContent--grid">
+                <h2 class="workTitle">XXXXX</h2>
+                <div class="workItem"></div>
+              </div>
+            </div>
+            <div class="workContent--column">
+              <div class="workContent--grid">
+                <h2 class="workTitle">XXXXX</h2>
+                <div class="workItem"></div>
+              </div>
+            </div>
+            <div class="workContent--column">
+              <div class="workContent--grid">
+                <h2 class="workTitle">XXXXX</h2>
+                <div class="workItem"></div>
+              </div>
+            </div>
           </div>
-          <div class="workContent--children">
-            <h1>XXXXX</h1>
-            <div class="roulette"></div>
-          </div>
-          <div class="workContent--children">
-            <h1>XXXXX</h1>
-            <div class="roulette"></div>
+          <div class="workContent--row" id="workContent">
+            <div class="workContent--column">
+              <div class="workContent--grid">
+                <h2 class="workTitle">XXXXX</h2>
+                <div class="workItem"></div>
+              </div>
+            </div>
+            <div class="workContent--column">
+              <div class="workContent--grid">
+                <h2 class="workTitle">XXXXX</h2>
+                <div class="workItem"></div>
+              </div>
+            </div>
+            <div class="workContent--column">
+              <div class="workContent--grid">
+                <h2 class="workTitle">XXXXX</h2>
+                <div class="workItem"></div>
+              </div>
+            </div>
           </div>
         </div>
 
+
         <!-- detail about works -->
         <div class="workContentDetail" id="workContentDetail">
-          <div class="workContentDetail__nav">
-            <ul class="projectList">
-              <li class="projectList__option">previous</li>
-              <li class="projectList__option">close</li>
-              <li class="projectList__option">next</li>
-            </ul>
-          </div>
           <div class="workContentDetail__portfolio">
+            <h2 class="project--title">XXXX</h2>
+            <div class="project--image">
+              <div class="project__image"></div>
+              <!-- <div class="project__image"></div>
+              <div class="project__image"></div> -->
+            </div>
             <div class="project--info">
               <h3 class="project__titleName">Info</h3>
               <p>
@@ -105,21 +156,21 @@
                 <li>Lorem ipsum dolor sit amet</li>
               </ul>
             </div>
-            <div class="project--image">
-              <div class="project__image"></div>
-              <div class="project__image"></div>
-              <div class="project__image"></div>
-            </div>
+          </div>
+          <div class="workContentDetail__nav">
+            <ul class="projectList">
+              <li class="projectList__option">previous</li>
+              <li class="projectList__option">close</li>
+              <li class="projectList__option">next</li>
+            </ul>
           </div>
         </div>
 
         <!-- detail about my private life -->
-        <div class="lifeContent" id="lifeContent">
-
-        </div>
+        <div class="lifeContent" id="lifeContent"></div>
 
         <!-- get in touch by social media -->
-        <div class="socialMediaContent"></div>
+        <!-- <div class="socialMediaContent"></div> -->
       </div>
     </div>
 

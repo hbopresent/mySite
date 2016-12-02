@@ -1,39 +1,86 @@
+/**********************
+
+  @media screen and (max-width: 34em) {}
+  @media screen and (min-width:34.1em) and (max-width: 48em) {}
+  @media screen and (min-width:48.1em) and (max-width: 62em) {}
+  @media screen and (min-width:62.1em) and (max-width: 75em) {}
+  @media screen and (min-width: 75.1em) {}
+
+***********************/
+
+
 /*------------------------------------*\
     $MAIN-BLOCK
 \*------------------------------------*/
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
 html,
 body,
-.mySite,
-.mySite__homePage,
-.mySite__mainContent {
+.mySite {
   width: 100%;
   height: 100%;
 }
-.mySite__homePage {
 
-}
-.mySite__mainContent {
-  display: none;
-}
 
 
 
 
 
 /*------------------------------------*\
-    $HEADER
+    $HOMEPAGE
 \*------------------------------------*/
-.mySite__mainContent--header {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+.mySite__homePage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   display: none;
 }
-  .mainContentTitle {
-    width: 100%;
+.mySite__homePage__content {
+  width: 100%;
+}
+  .homePageDescription {
+    font-size: 1.5em;
+    line-height: 150%;
     text-align: center;
-    font-size: 3em;
   }
+  .homePageEntrance {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+
+
+
+/*------------------------------------*\
+    $MAINCONTENT
+\*------------------------------------*/
+.mySite__mainContent {
+  width: 100%;
+  height: 100%;
+  /*display: none;*/
+}
+  .mySite__mainContent--header {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+  }
+    .mainContentTitle {
+      width: 100%;
+      text-align: center;
+      font-size: 3em;
+    }
+
 
 
 
@@ -49,11 +96,11 @@ body,
   border: thick black solid;
   border-radius: 10px;
   background-color: transparent;
-  position: absolute;
+  position: fixed;
   right: 20px;
   top: 20px;
   z-index: 100;
-  display: none;
+  /*display: none;*/
 }
 .mainNav {
   width: 100%;
@@ -86,21 +133,122 @@ body,
 
 
 /*------------------------------------*\
-    $WORK-CONTENT
+    $ABOUT-CONTENT
 \*------------------------------------*/
 .aboutContent {
-  width: 100%;
+  width: 90%;
   height: 100%;
-  display: none;
+  background-color: rgb(40, 120, 193);
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  /* display: none; */
 }
-  .aboutContent__personalPic {
+  .aboutContent__personalInfo {
     width: 100%;
-    height: 30%;
+    margin-top: 50px;
+  }
+    .personalPic {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      border-radius: 50%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .personalMedia {
+      width: 150px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+      .mediaItem {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: rgb(73, 196, 7);
+      }
+  .aboutContent--title {
+    text-align: center;
+    font-size: 5em;
+    margin-top: 30px;
   }
   .aboutContent__skills {
     width: 100%;
     height: 50%;
+    margin-left: auto;
+    margin-right: auto;
   }
+  .aboutContent__introduction {
+    width: 90%;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: red;
+  }
+
+  @media screen and (min-width:34.1em) and (max-width: 48em) {
+    .aboutContent {
+      width: 85%;
+    }
+    .aboutContent__introduction {
+      width: 80%;
+    }
+  }
+  @media screen and (min-width:48.1em) and (max-width: 62em) {
+    .aboutContent {
+      width: 80%;
+    }
+    .aboutContent__introduction {
+      width: 70%;
+    }
+  }
+  @media screen and (min-width:62.1em) and (max-width: 75em) {
+    .aboutContent {
+      width: 75%;
+    }
+    .aboutContent__introduction {
+      width: 60%;
+    }
+  }
+  @media screen and (min-width: 75.1em) {
+    .aboutContent {
+      width: 1000px;
+    }
+    .aboutContent__introduction {
+      width: 600px;
+    }
+  }
+
+  /***/
+  @media screen and (min-width: 34em) {
+    .aboutContent__personalInfo,
+    .aboutContent__introduction {
+      margin-top: 150px;
+    }
+  }
+
+  /*@media screen and (min-width: 48em) {
+    .aboutContent {
+      width: 60%;
+    }
+    .aboutContent__personalInfo {
+      position: absolute;
+      right: 0%;
+      width: 50%;
+    }
+    .personalPic {
+      width: 200px;
+      height: 300px;
+      border-radius: 0;
+    }
+    .aboutContent__introduction {
+      width: 300px;
+    }
+  }*/
 
 
 
@@ -113,7 +261,12 @@ body,
   height: 100%;
   display: none;
 }
-  .workContent--children {
+  .workContent--title {
+    text-align: center;
+    font-size: 5em;
+    margin-top: 30px;
+  }
+  .workContent__project {
     width: 100%;
     height: 40%;
     display: flex;
@@ -123,13 +276,78 @@ body,
     /*border-bottom: 1px rgba(154, 154, 154, 0.73) solid;*/
   }
     .roulette {
-      width: 80%;
-      height: 80%;
+      width: 100%;
+      height: 200px;
       background-color: rgba(247, 99, 99, 0.86);
     }
     h1 {
       margin: 0;
     }
+
+/*****************  main content grid  ********************/
+.workContent--container {
+  width: 100%;
+  display: none;
+}
+  .workContent--row {
+    width: 100%;
+    display: table;
+    clear: both;
+    content: "";
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .workContent--column {
+    width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-top: 50px;
+  }
+  .workContent--grid {
+    width: 100%;
+  }
+    .workTitle {
+      text-align: center;
+      margin: 0;
+    }
+    .workItem {
+      width: 100%;
+      height: 200px;
+      background-color: rgba(247, 99, 99, 0.86);
+    }
+/***************  column  ****************/
+@media screen and (min-width:48em) {
+  .workContent--column {
+    width: 33.33333%;
+    float: left;
+  }
+}
+/***************  row  ****************/
+@media screen and (min-width:20em) and (max-width:34em){
+  .workContent--row {
+    width: 80%;
+  }
+}
+@media screen and (min-width:34.1em) and (max-width:48em) {
+  .workContent--row {
+    width: 60%;
+  }
+}
+@media screen and (min-width:48.1em) and (max-width:62em) {
+  .workContent--row {
+    width: 90%;
+  }
+}
+@media screen and (min-width:62.1em) and (max-width:75em) {
+  .workContent--row {
+    width: 70%;
+  }
+}
+@media screen and (min-width:75.1em) {
+  .workContent--row {
+    width: 60%;
+  }
+}
 
 
 
@@ -144,8 +362,8 @@ body,
 }
   .workContentDetail__nav {
     width: 100%;
-    position: fixed;
-    top: 0%;
+    margin-top: 100px;
+    margin-bottom: 20px;
   }
     .projectList {
       width: 60%;
@@ -161,24 +379,30 @@ body,
         list-style: none;
         display: inline-block;
       }
+  .project--title {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 40px;
+  }
   .workContentDetail__portfolio {
     width: 100%;
-    height: 100%;
   }
     .project--info {}
     .project--feature {}
     .project--tech {}
     .project--image {
       width: 100%;
-      height: 50%;
+      height: 30%;
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;;
+      justify-content: center;
       align-items: center;
+      /*display: none;*/
     }
       .project__image {
         width: 60%;
-        height: 30%;
+        height: 60%;
         background-color: rgb(12, 200, 200);
       }
 
@@ -191,6 +415,7 @@ body,
 .lifeContent {
   width: 100%;
   height: 100%;
+  display: none;
 }
 
 
@@ -199,9 +424,3 @@ body,
 /*------------------------------------*\
     $SOCIAL-MEDIA-CONTENT
 \*------------------------------------*/
-.socialMediaContent {
-  width: 100%;
-  height: 15%;
-  background-color: rgba(65, 76, 222, 1);
-  display: none;
-}
