@@ -5,6 +5,7 @@
     <title>Franklin Hung</title>
     <link rel="stylesheet" href="/views/css/normalize.css"/>
     <link rel="stylesheet" href="/views/css/main.css"/>
+    <script src="/socket.io/socket.io.js"></script>
   </head>
   <body>
     <div class="mySite">
@@ -30,13 +31,12 @@
             <li class="nav__list__option" id="navHomePage">Home</li>
             <li class="nav__list__option" id="navAboutPage">About</li>
             <li class="nav__list__option" id="navWorkPage">work</li>
-            <li class="nav__list__option" id="navLifePage">life</li>
           </ul>
         </nav>
 
         <!-- detail about myself -->
         <div class="aboutContent" id="aboutContent">
-          <h1 class="aboutContent--title">About</h1>
+          <h1 class="aboutContent--title">XXXX</h1>
           <div class="aboutContent__personalInfo">
             <div class="personalPic"></div>
             <div class="personalMedia">
@@ -50,30 +50,33 @@
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
-          <div class="aboutContent__skills">
-            <div class="clentSide">
-              <h3>XXXXX</h3>
-              <ul class="skillList">
-                <li class="skillList__option">AAAAA</li>
-                <li class="skillList__option">BBBBB</li>
-                <li class="skillList__option">CCCCC</li>
-              </ul>
-            </div>
-            <div class="serverSide">
-              <h3>XXXXX</h3>
-              <ul class="skillList">
-                <li class="skillList__option">DDDDD</li>
-                <li class="skillList__option">EEEEE</li>
-                <li class="skillList__option">FFFFF</li>
-              </ul>
-            </div>
-            <div class="serverSide">
-              <h3>XXXXX</h3>
-              <ul class="skillList">
-                <li class="skillList__option">DDDDD</li>
-                <li class="skillList__option">EEEEE</li>
-                <li class="skillList__option">FFFFF</li>
-              </ul>
+
+          <div class="aboutContent__skills--container">
+            <div class="aboutContent__skills--row">
+              <div class="aboutContent__skills--column">
+                <div class="aboutContent__skills--grid">
+                  <div class="clientSide">
+                    <h3>XXXXX</h3>
+                    <ul class="skillList">
+                      <li class="skillList__option">AAAAA</li>
+                      <li class="skillList__option">BBBBB</li>
+                      <li class="skillList__option">CCCCC</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="aboutContent__skills--column">
+                <div class="aboutContent__skills--grid">
+                  <div class="serverSide">
+                    <h3>XXXXX</h3>
+                    <ul class="skillList">
+                      <li class="skillList__option">AAAAA</li>
+                      <li class="skillList__option">BBBBB</li>
+                      <li class="skillList__option">CCCCC</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -123,24 +126,23 @@
           </div>
         </div>
 
-
         <!-- detail about works -->
         <div class="workContentDetail" id="workContentDetail">
           <div class="workContentDetail__portfolio">
             <h2 class="project--title">XXXX</h2>
-            <div class="project--image">
-              <div class="project__image"></div>
+            <div class="project--video" id="projectVideo">
+              <div class="project__video"></div>
               <!-- <div class="project__image"></div>
               <div class="project__image"></div> -->
             </div>
-            <div class="project--info">
+            <div class="project--info" id="projectInfo">
               <h3 class="project__titleName">Info</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
               </p>
             </div>
-            <div class="project--feature">
+            <div class="project--feature" id="projectFeature">
               <h3 class="project__titleName">Feature</h3>
               <ul class="project__featureList">
                 <li>Lorem ipsum dolor sit amet</li>
@@ -148,7 +150,7 @@
                 <li>Lorem ipsum dolor sit amet</li>
               </ul>
             </div>
-            <div class="project--tech">
+            <div class="project--tech" id="projectTech">
               <h3 class="project__titleName">Tech</h3>
               <ul class="project__techList">
                 <li>Lorem ipsum dolor sit amet</li>
@@ -159,21 +161,19 @@
           </div>
           <div class="workContentDetail__nav">
             <ul class="projectList">
-              <li class="projectList__option">previous</li>
-              <li class="projectList__option">close</li>
-              <li class="projectList__option">next</li>
+              <li class="projectList__option" id="projectPrevButton">previous</li>
+              <li class="projectList__option" id="projectCloseButton">close</li>
+              <li class="projectList__option" id="projectNextButton">next</li>
             </ul>
           </div>
         </div>
 
-        <!-- detail about my private life -->
-        <div class="lifeContent" id="lifeContent"></div>
 
         <!-- get in touch by social media -->
         <!-- <div class="socialMediaContent"></div> -->
       </div>
     </div>
-
+    <!-- <script src="/views/js/socketHandler.js"></script> -->
     <script src="/views/js/main.js"></script>
   </body>
 </html>

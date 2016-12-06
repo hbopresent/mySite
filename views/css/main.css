@@ -138,11 +138,11 @@ body,
 .aboutContent {
   width: 90%;
   height: 100%;
-  background-color: rgb(40, 120, 193);
+  /*background-color: rgb(40, 120, 193);*/
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  /* display: none; */
+  display: none;
 }
   .aboutContent__personalInfo {
     width: 100%;
@@ -176,12 +176,44 @@ body,
     font-size: 5em;
     margin-top: 30px;
   }
-  .aboutContent__skills {
+  /*.aboutContent__skills {
     width: 100%;
     height: 50%;
     margin-left: auto;
     margin-right: auto;
+  }*/
+
+  /**  aboutContent__skills GRID SYSTEM  **/
+  .aboutContent__skills--container {
+    width: 100%;
   }
+    .aboutContent__skills--row {
+      width: 100%;
+      display: table;
+      clear: both;
+      content: "";
+      margin-left: auto;
+      margin-right: auto;
+      /*background-color: green;*/
+    }
+      .aboutContent__skills--column {
+        width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        margin-top: 50px;
+        /*background-color: orange;*/
+      }
+      @media screen and (min-width:34em) {
+        .aboutContent__skills--column {
+          width: 50%;
+          float: left;
+        }
+      }
+        .aboutContent__skills--grid {
+          width: 100%;
+        }
+
+
   .aboutContent__introduction {
     width: 90%;
     margin-top: 50px;
@@ -194,7 +226,8 @@ body,
     .aboutContent {
       width: 85%;
     }
-    .aboutContent__introduction {
+    .aboutContent__introduction,
+    .aboutContent__skills--row {
       width: 80%;
     }
   }
@@ -202,7 +235,8 @@ body,
     .aboutContent {
       width: 80%;
     }
-    .aboutContent__introduction {
+    .aboutContent__introduction,
+    .aboutContent__skills--row {
       width: 70%;
     }
   }
@@ -210,7 +244,8 @@ body,
     .aboutContent {
       width: 75%;
     }
-    .aboutContent__introduction {
+    .aboutContent__introduction,
+    .aboutContent__skills--row {
       width: 60%;
     }
   }
@@ -218,7 +253,8 @@ body,
     .aboutContent {
       width: 1000px;
     }
-    .aboutContent__introduction {
+    .aboutContent__introduction,
+    .aboutContent__skills--row {
       width: 600px;
     }
   }
@@ -356,55 +392,116 @@ body,
     $WORK-CONTENT-DETAIL
 \*------------------------------------*/
 .workContentDetail {
-  width: 100%;
+  width: 90%;
   height: 100%;
-  display: none;
+  margin-left: auto;
+  margin-right: auto;
+  transition: opacity 0.5s ease;
+  /*display: none;*/
 }
-  .workContentDetail__nav {
+.workContentDetail__nav {
+  width: 100%;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+  .projectList {
     width: 100%;
-    margin-top: 100px;
-    margin-bottom: 20px;
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-    .projectList {
-      width: 60%;
-      margin: 0;
-      padding: 0;
-      margin-left: auto;
-      margin-right: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .projectList__option {
+      list-style: none;
+      display: inline-block;
+      cursor: pointer;
     }
-      .projectList__option {
-        list-style: none;
-        display: inline-block;
-      }
+@media screen and (min-width:34.1em) and (max-width: 48em) {
+  .workContentDetail {
+    width: 85%;
+  }
+  .workContentDetail__nav {
+    width: 75%;
+  }
+}
+@media screen and (min-width:48.1em) and (max-width: 62em) {
+  .workContentDetail {
+    width: 80%;
+  }
+  .workContentDetail__nav {
+    width: 70%;
+  }
+}
+@media screen and (min-width:62.1em) and (max-width: 75em) {
+  .workContentDetail {
+    width: 75%;
+  }
+  .workContentDetail__nav {
+    width: 65%;
+  }
+}
+@media screen and (min-width:75.1em) {
+  .workContentDetail {
+    width: 1000px;
+  }
+  .workContentDetail__nav {
+    width: 500px;
+  }
+}
   .project--title {
     width: 100%;
     text-align: center;
     margin: 0;
     padding: 0;
     font-size: 40px;
+    margin-top: 30px;
   }
   .workContentDetail__portfolio {
     width: 100%;
   }
-    .project--info {}
-    .project--feature {}
-    .project--tech {}
-    .project--image {
-      width: 100%;
-      height: 30%;
+    .project--info {
+      margin-top: 50px;
+    }
+    .project--feature {
+      margin-top: 50px;
+    }
+    .project--tech {
+      margin-top: 50px;
+    }
+    .project--video {
+      width: 300px;
+      height: 225px;
       display: flex;
       justify-content: center;
       align-items: center;
-      /*display: none;*/
+      /* display: none; */
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 50px;
     }
-      .project__image {
-        width: 60%;
-        height: 60%;
+      .project__video {
+        width: 100%;
+        height: 100%;
         background-color: rgb(12, 200, 200);
       }
+      @media screen and (min-width:34em) {
+        .project--info,
+        .project--feature,
+        .project--tech,
+        .project--video {
+          margin-top: 150px;
+        }
+        .project--video {
+          width: 400px;
+          height: 300px;
+        }
+      }
+
 
 
 
