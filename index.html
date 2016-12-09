@@ -16,27 +16,27 @@
             Franklin Hung</br>
             Frontend Developer
           </p>
-          <input type="button" class="homePageEntrance" value="check" id="entrance"/>
+          <div class="entranceBox" id="entrance">
+            <div class="mainContentEntrance" id="mainContentEntrance"></div>
+            <div class="entranceArrow" id="entranceArrow"></div>
+          </div>
         </div>
       </div>
       <!-- main content of the website -->
       <div class="mySite__mainContent" id="mainContent">
-        <header class="mySite__mainContent--header" id="mainHeader">
-          <h1 class="mainContentTitle">ThisIsTitle</h1>
-        </header>
         <!-- navigation positioned in fixed -->
         <input type="button" class="mainNavButton" id="mainNavButton"/>
         <nav class="mainNav" id="mainNav">
           <ul class="nav__list">
-            <li class="nav__list__option" id="navHomePage">Home</li>
-            <li class="nav__list__option" id="navAboutPage">About</li>
-            <li class="nav__list__option" id="navWorkPage">work</li>
+            <li class="nav__list__option" id="navHomePage">HOME</li>
+            <li class="nav__list__option" id="navAboutPage">ABOUT</li>
+            <li class="nav__list__option" id="navWorkPage">WORK</li>
           </ul>
         </nav>
 
         <!-- detail about myself -->
         <div class="aboutContent" id="aboutContent">
-          <h1 class="aboutContent--title">XXXX</h1>
+          <h1 class="aboutContent--title">ABOUT</h1>
           <div class="aboutContent__personalInfo">
             <div class="personalPic"></div>
             <div class="personalMedia">
@@ -82,44 +82,32 @@
         </div>
 
         <!-- showcase of works -->
-        <div class="workContent--container">
-          <h1 class="workContent--title">Work</h1>
-          <div class="workContent--row" id="workContent">
+        <div class="workContent--container" id="workContent">
+          <h1 class="workContent--title">WORK</h1>
+          <div class="workContent--row">
             <div class="workContent--column">
-              <div class="workContent--grid">
-                <h2 class="workTitle">XXXXX</h2>
+              <div class="workContent--grid" id="roulette">
+                <h2 class="workTitle">Roulette</h2>
                 <div class="workItem"></div>
               </div>
             </div>
             <div class="workContent--column">
-              <div class="workContent--grid">
-                <h2 class="workTitle">XXXXX</h2>
+              <div class="workContent--grid" id="baccarat">
+                <h2 class="workTitle">Baccarat</h2>
                 <div class="workItem"></div>
               </div>
             </div>
             <div class="workContent--column">
-              <div class="workContent--grid">
-                <h2 class="workTitle">XXXXX</h2>
+              <div class="workContent--grid" id="zootopia">
+                <h2 class="workTitle">Zootopia</h2>
                 <div class="workItem"></div>
               </div>
             </div>
           </div>
-          <div class="workContent--row" id="workContent">
+          <div class="workContent--row">
             <div class="workContent--column">
-              <div class="workContent--grid">
-                <h2 class="workTitle">XXXXX</h2>
-                <div class="workItem"></div>
-              </div>
-            </div>
-            <div class="workContent--column">
-              <div class="workContent--grid">
-                <h2 class="workTitle">XXXXX</h2>
-                <div class="workItem"></div>
-              </div>
-            </div>
-            <div class="workContent--column">
-              <div class="workContent--grid">
-                <h2 class="workTitle">XXXXX</h2>
+              <div class="workContent--grid" id="sicbo">
+                <h2 class="workTitle">Sicbo</h2>
                 <div class="workItem"></div>
               </div>
             </div>
@@ -132,40 +120,51 @@
             <h2 class="project--title">XXXX</h2>
             <div class="project--video" id="projectVideo">
               <div class="project__video"></div>
-              <!-- <div class="project__image"></div>
-              <div class="project__image"></div> -->
             </div>
-            <div class="project--info" id="projectInfo">
-              <h3 class="project__titleName">Info</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
-            </div>
-            <div class="project--feature" id="projectFeature">
-              <h3 class="project__titleName">Feature</h3>
-              <ul class="project__featureList">
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Lorem ipsum dolor sit amet</li>
-              </ul>
-            </div>
-            <div class="project--tech" id="projectTech">
-              <h3 class="project__titleName">Tech</h3>
-              <ul class="project__techList">
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Lorem ipsum dolor sit amet</li>
-              </ul>
-            </div>
+            <div class="project--info" id="projectInfo"></div>
+            <div class="project--feature" id="projectFeature"></div>
+            <div class="project--tech" id="projectTech"></div>
           </div>
           <div class="workContentDetail__nav">
-            <ul class="projectList">
-              <li class="projectList__option" id="projectPrevButton">previous</li>
-              <li class="projectList__option" id="projectCloseButton">close</li>
-              <li class="projectList__option" id="projectNextButton">next</li>
-            </ul>
+            <div class="workContentDetailList">
+              <div class="previousButton" id="projectPrevButton"></div>
+              <div class="closeButtonWrap" id="projectCloseButton">
+                <div class="rightCloseLine"></div>
+                <div class="leftCloseLine"></div>
+              </div>
+              <div class="nextButton" id="projectNextButton"></div>
+            </div>
+            <!-- <ul class="projectList">
+              <li class="projectList__option" id="projectPrevButton">
+                <div class="previousButton"></div>
+              </li>
+              <li class="projectList__option" id="projectCloseButton">
+                <div class="closeButtonWrap">
+                  <div class="closeBar rightBar"></div>
+                  <div class="closeBar leftBar"></div>
+                </div>
+              </li>
+              <li class="projectList__option" id="projectNextButton">
+                <div class="nextButton"></div>
+              </li>
+            </ul> -->
           </div>
+          <!-- <div class="workContentDetail__nav">
+            <ul class="projectList">
+              <li class="projectList__option" id="projectPrevButton">
+                <div class="previousButton"></div>
+              </li>
+              <li class="projectList__option" id="projectCloseButton">
+                <div class="closeButtonWrap">
+                  <div class="closeBar rightBar"></div>
+                  <div class="closeBar leftBar"></div>
+                </div>
+              </li>
+              <li class="projectList__option" id="projectNextButton">
+                <div class="nextButton"></div>
+              </li>
+            </ul>
+          </div> -->
         </div>
 
 

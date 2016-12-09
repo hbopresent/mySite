@@ -41,7 +41,9 @@ body,
   display: flex;
   justify-content: center;
   align-items: center;
-  display: none;
+  overflow: hidden;
+  position: fixed;
+  /*display: none;*/
 }
 .mySite__homePage__content {
   width: 100%;
@@ -55,6 +57,58 @@ body,
     display: block;
     margin-left: auto;
     margin-right: auto;
+    opacity: 0;
+  }
+
+  .entranceBox {
+    width: 100%;
+    height: 100px;
+    position: relative;
+  }
+
+
+  .mainContentEntrance {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid black;
+    position: absolute;
+    left: calc((100% - 100px) / 2);
+    transform-origin: 50% 50%;
+    transition: transform 0.3s ease;
+  }
+    .entranceArrow {
+      width: 30px;
+      height: 30px;
+      border-top: 2px solid black;
+      border-right: 2px solid black;
+      transform: rotate(45deg);
+      position: absolute;
+      left: calc((100% - 30px) / 2.1);
+      top: 35px;
+      transition: left 0.3s ease;
+    }
+  .entranceAnimation1 {
+    animation: entranceAnimation1 0.3s ease 1 forwards;
+  }
+  @keyframes entranceAnimation1 {
+    0% {
+      transform: scale(1, 1);
+    }
+    100% {
+      transform: scale(0, 0);
+    }
+  }
+  .entranceAnimation2 {
+    animation: entranceAnimation2 0.3s ease 1 forwards;
+  }
+  @keyframes entranceAnimation2 {
+    0% {
+      left: calc((100% - 30px) / 2.1);
+    }
+    100% {
+      left: 100%;
+    }
   }
 
 
@@ -67,19 +121,9 @@ body,
 .mySite__mainContent {
   width: 100%;
   height: 100%;
-  /*display: none;*/
+  display: none;
 }
-  .mySite__mainContent--header {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    display: none;
-  }
-    .mainContentTitle {
-      width: 100%;
-      text-align: center;
-      font-size: 3em;
-    }
+
 
 
 
@@ -93,23 +137,53 @@ body,
   width: 50px;
   height: 50px;
   cursor: pointer;
-  border: thick black solid;
+  border: 2px rgb(184, 4, 200) solid;
   border-radius: 10px;
   background-color: transparent;
   position: fixed;
   right: 20px;
   top: 20px;
   z-index: 100;
-  /*display: none;*/
+  display: none;
 }
 .mainNav {
   width: 100%;
   height: 100%;
-  background-color: orange;
-  position: absolute;
+  background-color: rgb(175, 180, 179);
+  position: fixed;
   top: 0%;
-  left: 0%;
-  display: none;
+  left: 100%;
+  z-index: 2;
+  transition: left 0.3s ease-out;
+  /*display: none;*/
+}
+.showMainNav {
+  animation: showMainNav 0.3s 1 ease-out forwards;
+}
+@keyframes showMainNav {
+  0% {
+    left: 100%;
+  }
+  40% {
+    left: 0%;
+  }
+  50% {
+    left: 15%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+.closeMainNav {
+  animation: closeMainNav 0.3s 1 ease-out forwards;
+}
+@keyframes closeMainNav {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
 }
   .nav__list {
     margin: 0;
@@ -126,6 +200,17 @@ body,
       font-size: 3em;
       margin-bottom: 30px;
       cursor: pointer;
+    }
+    .fadeInNavItem {
+      animation: fadeInNavItem 0.3s 1 ease-out forwards;
+    }
+    @keyframes fadeInNavItem {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
     }
 
 
@@ -151,7 +236,7 @@ body,
     .personalPic {
       width: 100px;
       height: 100px;
-      background-color: red;
+      background-color: rgba(175, 180, 179, 0.79);
       border-radius: 50%;
       margin-left: auto;
       margin-right: auto;
@@ -169,7 +254,7 @@ body,
         width: 30px;
         height: 30px;
         border-radius: 50%;
-        background-color: rgb(73, 196, 7);
+        background-color: rgba(175, 180, 179, 0.79);
       }
   .aboutContent--title {
     text-align: center;
@@ -219,7 +304,7 @@ body,
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
-    background-color: red;
+    /*background-color: red;*/
   }
 
   @media screen and (min-width:34.1em) and (max-width: 48em) {
@@ -292,7 +377,7 @@ body,
 /*------------------------------------*\
     $WORK-CONTENT
 \*------------------------------------*/
-.workContent {
+/*.workContent {
   width: 100%;
   height: 100%;
   display: none;
@@ -309,7 +394,6 @@ body,
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /*border-bottom: 1px rgba(154, 154, 154, 0.73) solid;*/
   }
     .roulette {
       width: 100%;
@@ -318,13 +402,18 @@ body,
     }
     h1 {
       margin: 0;
-    }
+    }*/
 
 /*****************  main content grid  ********************/
 .workContent--container {
   width: 100%;
   display: none;
 }
+  .workContent--title {
+    text-align: center;
+    font-size: 5em;
+    margin-top: 30px;
+  }
   .workContent--row {
     width: 100%;
     display: table;
@@ -349,7 +438,21 @@ body,
     .workItem {
       width: 100%;
       height: 200px;
-      background-color: rgba(247, 99, 99, 0.86);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: rgba(175, 180, 179, 0.79);
+    }
+    .work--roulette {
+      background-image: url(../img/roulette.jpg);
+    }
+    .work--baccarat {
+      background-image: url(../img/baccarat.jpg);
+    }
+    .work--zootopia {
+      background-image: url(../img/zootopia.jpg);
+    }
+    .work--sicbo {
+      background-image: url(../img/sicbo.jpg);
     }
 /***************  column  ****************/
 @media screen and (min-width:48em) {
@@ -397,15 +500,19 @@ body,
   margin-left: auto;
   margin-right: auto;
   transition: opacity 0.5s ease;
-  /*display: none;*/
+  position: absolute;
+  top: 0%;
+  left: 5%;
+  display: none;
 }
-.workContentDetail__nav {
+/*.workContentDetail__nav {
   width: 100%;
+  height: 30px;
   margin-top: 100px;
   margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
-}
+}*/
   .projectList {
     width: 100%;
     margin: 0;
@@ -418,9 +525,105 @@ body,
   }
     .projectList__option {
       list-style: none;
-      display: inline-block;
+      display: flex;
       cursor: pointer;
     }
+      /*.previousButton {
+        width: 30px;
+        height: 30px;
+        border-top: 3px solid black;
+        border-right: 3px solid black;
+        transform: rotate(225deg);
+        position: absolute;
+        left: 0%;
+        top: 0%;
+      }*/
+      /*.nextButton {
+        width: 30px;
+        height: 30px;
+        border-top: 3px solid black;
+        border-right: 3px solid black;
+        transform: rotate(45deg);
+        position: absolute;
+        right: 0%;
+        top: 0%;
+      }*/
+      /*.closeButtonWrap {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: calc((100% - 50px) / 2);
+        top: 31%;
+      }*/
+        .closeBar {
+          width: 50px;
+          height: 3px;
+          background-color: black;
+          /*position: absolute;*/
+        }
+        .rightBar {
+          transform: rotate(45deg);
+        }
+        .leftBar {
+          transform: rotate(135deg);
+        }
+
+
+.workContentDetail__nav {
+  width: 100%;
+  height: 30px;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+  .workContentDetailList {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+    .previousButton {
+      width: 30px;
+      height: 30px;
+      border-top: 3px solid black;
+      border-right: 3px solid black;
+      transform: rotate(225deg);
+    }
+    .nextButton {
+      width: 30px;
+      height: 30px;
+      border-top: 3px solid black;
+      border-right: 3px solid black;
+      transform: rotate(45deg);
+    }
+    .closeButtonWrap {
+      width: 50px;
+      height: 50px;
+    }
+      .leftCloseLine {
+        width: 30px;
+        height: 30px;
+        border-top: 3px solid black;
+        border-right: 3px solid black;
+        transform: rotate(225deg);
+        position: absolute;
+      }
+      .rightCloseLine {
+        width: 30px;
+        height: 30px;
+        border-top: 3px solid black;
+        border-right: 3px solid black;
+        transform: rotate(45deg);
+        position: absolute;
+      }
+
+
+
+
+
 @media screen and (min-width:34.1em) and (max-width: 48em) {
   .workContentDetail {
     width: 85%;
@@ -501,23 +704,3 @@ body,
           height: 300px;
         }
       }
-
-
-
-
-
-/*------------------------------------*\
-    $LIFE-CONTENT
-\*------------------------------------*/
-.lifeContent {
-  width: 100%;
-  height: 100%;
-  display: none;
-}
-
-
-
-
-/*------------------------------------*\
-    $SOCIAL-MEDIA-CONTENT
-\*------------------------------------*/

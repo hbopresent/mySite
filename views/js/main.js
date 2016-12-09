@@ -1,50 +1,78 @@
 var socket = io();
 var mySite = (function(global) {
-  // var mainNavButtonFlag = false;
 
-  var homeObj = {
-    enterToMainContent: function() {
-      // people come from home page is the about page
-      document.getElementById("homePage").style.display = "none";
-      document.getElementById("mainContent").style.display = "block";
-      document.getElementById("mainNavButton").style.display = "block";
-      document.getElementById("aboutContent").style.display = "block";
-      document.getElementById("mainHeader").style.display = "block";
+  var homePage           = document.getElementById("homePage");
+  var mainContent        = document.getElementById("mainContent");
+  var aboutContent       = document.getElementById("aboutContent");
+  var workContent        = document.getElementById("workContent");
+  var workContentDetail  = document.getElementById("workContentDetail");
+  var mainNavButton      = document.getElementById("mainNavButton");
+  var mainNav            = document.getElementById("mainNav");
+  var navHomePage        = document.getElementById("navHomePage");
+  var navAboutPage       = document.getElementById("navAboutPage");
+  var navWorkPage        = document.getElementById("navWorkPage");
+  var navLifePage        = document.getElementById("navLifePage");
+  var entrance           = document.getElementById("entrance");
+  var projectPrevButton  = document.getElementById("projectPrevButton");
+  var projectNextButton  = document.getElementById("projectNextButton");
+  var projectCloseButton = document.getElementById("projectCloseButton");
+  var projectRoulette    = document.getElementById("roulette");
+  var projectBaccarat    = document.getElementById("baccarat");
+  var projectZootopia    = document.getElementById("zootopia");
+
+
+  // setting and binding whole handlers here
+  var eventListener = {
+    clickHandlers: function() {
+      mainNavButton.addEventListener("click", mainNavigation.openMenu);
+      navHomePage.addEventListener("click", mainNavigation.goToHomePage);
+      navAboutPage.addEventListener("click", mainNavigation.goToAboutPage);
+      navWorkPage.addEventListener("click", mainNavigation.goToWorkPage);
+
+      // entrance events of homepage
+      entrance.addEventListener("click", function() {
+        document.getElementById("mainContentEntrance").classList.add("entranceAnimation1");
+      });
+
+      // works navbar events
+      projectPrevButton.addEventListener("click", workCollection.showPrevProject);
+      // projectNextButton.addEventListener("click", workCollection.showNextProject);
+      // projectCloseButton.addEventListener("click", workCollection.closeProject);
+      // check works events
+      projectRoulette.addEventListener("click", function() { workCollection.sendWorkSignal(projectRoulette.id);});
+      projectBaccarat.addEventListener("click", function() { workCollection.sendWorkSignal(projectBaccarat.id);});
+      projectZootopia.addEventListener("click", function() { workCollection.sendWorkSignal(projectZootopia.id);});
+    },
+
+    animationHandlers: function() {
+      entrance.addEventListener("animationend", function(e) {
+        if(e.animationName == "entranceAnimation1") {
+          document.getElementById("entranceArrow").classList.add("entranceAnimation2");
+        }
+
+        if(e.animationName == "entranceAnimation2") {
+          document.getElementById("homePage").style.display = "none";
+          document.getElementById("mainContent").style.display = "block";
+          document.getElementById("mainNavButton").style.display = "block";
+          document.getElementById("aboutContent").style.display = "block";
+          document.getElementById("mainContentEntrance").classList.remove("entranceAnimation1");
+          document.getElementById("entranceArrow").classList.remove("entranceAnimation2");
+        }
+      });
+
+      // nav items animation event
+      mainNav.addEventListener("animationend", function(e) {
+        if(e.animationName == "closeMainNav") {
+          navAboutPage.classList.remove("fadeInNavItem");
+          navWorkPage.classList.remove("fadeInNavItem");
+          navHomePage.classList.remove("fadeInNavItem");
+        }
+      });
     }
   };
 
-  var aboutObj = {};
-
-  var workObj = {};
-
-  // setting and binding whole handlers here
-  function settingHandlers() {
-    var mainNavButton      = document.getElementById("mainNavButton");
-    var navHomePage        = document.getElementById("navHomePage");
-    var navAboutPage       = document.getElementById("navAboutPage");
-    var navWorkPage        = document.getElementById("navWorkPage");
-    var navLifePage        = document.getElementById("navLifePage");
-    var entrance           = document.getElementById("entrance");
-    var projectPrevButton  = document.getElementById("projectPrevButton");
-    var projectNextButton  = document.getElementById("projectNextButton");
-    var projectCloseButton = document.getElementById("projectCloseButton");
-
-    // main navbar events
-    mainNavButton.addEventListener("click", mainNavigation.openMenu);
-    navHomePage.addEventListener("click", mainNavigation.goToHomePage);
-    navAboutPage.addEventListener("click", mainNavigation.goToAboutPage);
-    navWorkPage.addEventListener("click", mainNavigation.goToWorkPage);
-    // entrance events of homepage
-    entrance.addEventListener("click", homeObj.enterToMainContent);
-    // works navbar events
-    projectPrevButton.addEventListener("click", workCollection.showPrevProject);
-    projectNextButton.addEventListener("click", workCollection.showNextProject);
-    projectCloseButton.addEventListener("click", workCollection.closeProject);
-  }
-
   // open socket
   var openSocket = function() {
-    console.log("open socket!!");
     socket.on("rouletteWork", function(msg) { workCollection.showProjectDetail(msg)});
     socket.on("baccaratWork", function(msg) { workCollection.showProjectDetail(msg)});
     socket.on("zootopiaWork", function(msg) { workCollection.showProjectDetail(msg)});
@@ -59,50 +87,65 @@ var mySite = (function(global) {
       mainNavigation.mainNavButtonFlag = !mainNavigation.mainNavButtonFlag;
       console.log("mainNavigation.mainNavButtonFlag: " + mainNavigation.mainNavButtonFlag);
       if(mainNavigation.mainNavButtonFlag) {
-        document.getElementById("mainNav").style.display = "block";
-        document.getElementById("mainContent").style.overflow = "hidden";
+        document.getElementById("mainNav").classList.add("showMainNav");
+        document.getElementById("mainNav").classList.remove("closeMainNav");
       }
       else {
-        document.getElementById("mainNav").style.display = "none";
-        document.getElementById("mainContent").style.overflow = "";
+        document.getElementById("mainNav").classList.remove("showMainNav");
+        document.getElementById("mainNav").classList.add("closeMainNav");
       }
-    },
-
-    closeAllPage: function() {
-      document.getElementById("aboutContent").style.display = "none";
-      document.getElementById("workContent").style.display = "none";
-      document.getElementById("mainNav").style.display = "none";
-      mainNavigation.mainNavButtonFlag = false;
     },
 
     goToHomePage: function() {
-      mainNavigation.closeAllPage();
-      document.getElementById("mainContent").style.display = "none";
-      document.getElementById("homePage").style.display = "block";
+      console.log("function: goToHomePage");
+      navAboutPage.classList.add("fadeInNavItem");
+      navWorkPage.classList.add("fadeInNavItem");
+      setTimeout(function() {
+        aboutContent.style.display = "none";
+        workContent.style.display = "none";
+        workContentDetail.style.display = "none";
+        mainNavigation.openMenu();
+        setTimeout(function() {
+          homePage.style.display = "flex";
+          document.getElementById("mainNavButton").style.display = "none";
+        }, 500);
+      }, 500);
     },
 
     goToAboutPage: function() {
-      mainNavigation.closeAllPage();
-      document.getElementById("mainContent").style.display = "block";
-      document.getElementById("mainContent").style.overflow = "";
-      document.getElementById("aboutContent").style.display = "block";
+      navHomePage.classList.add("fadeInNavItem");
+      navWorkPage.classList.add("fadeInNavItem");
+      setTimeout(function() {
+        workContent.style.display = "none";
+        workContentDetail.style.display = "none";
+        mainNavigation.openMenu();
+        setTimeout(function() {
+          aboutContent.style.display = "block";
+        }, 500);
+      }, 500);
     },
 
     goToWorkPage: function() {
-      mainNavigation.closeAllPage();
-      document.getElementById("mainContent").style.display = "block";
-      document.getElementById("mainContent").style.overflow = "";
-      document.getElementById("workContent").style.display = "block";
+      navAboutPage.classList.add("fadeInNavItem");
+      navHomePage.classList.add("fadeInNavItem");
+      setTimeout(function() {
+        aboutContent.style.display = "none";
+        workContentDetail.style.display = "none";
+        mainNavigation.openMenu();
+        setTimeout(function() {
+          workContent.style.display = "block";
+        }, 500);
+      }, 500);
     }
   }
 
   var workCollection = {
-    stateIndex: 0,
-    workState: null,
-    workArray: ["roulette", "baccarat", "zootopia", "sicbo"],
-    projectInfo: document.getElementById("projectInfo"),
+        stateIndex: 0,
+         workState: null,
+         workArray: ["roulette", "baccarat", "zootopia", "sicbo"],
+       projectInfo: document.getElementById("projectInfo"),
     projectFeature: document.getElementById("projectFeature"),
-    projectTech: document.getElementById("projectTech"),
+       projectTech: document.getElementById("projectTech"),
 
     showNextProject: function() {
       if(workCollection.stateIndex + 1 == workCollection.workArray.length) {
@@ -128,7 +171,8 @@ var mySite = (function(global) {
     },
 
     closeProject: function() {
-      document.getElementById("workContentDetail").style.opacity = 0;
+      document.getElementById("workContentDetail").style.display = "none";
+      document.getElementById("workContent").style.display = "block";
     },
 
     clearProject: function() {
@@ -156,6 +200,9 @@ var mySite = (function(global) {
     },
 
     showProjectDetail: function(msg) {
+      document.getElementById("workContentDetail").style.display = "block";
+      document.getElementById("workContent").style.display = "none";
+
       // update project data (rerender UI)
       var projectInfoTitle = document.createElement("h3");
       var projectInfoText = document.createElement("p");
@@ -193,10 +240,12 @@ var mySite = (function(global) {
     }
   }
 
+  // initialize settings
   var initialize = function() {
-    settingHandlers();
+    eventListener.clickHandlers();
+    // eventListener.mobileHandlers();
+    eventListener.animationHandlers();
     openSocket();
-    console.log("initialize mySite!");
   }
 
   return {
