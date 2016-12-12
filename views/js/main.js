@@ -36,8 +36,8 @@ var mySite = (function(global) {
 
       // works navbar events
       projectPrevButton.addEventListener("click", workCollection.showPrevProject);
-      // projectNextButton.addEventListener("click", workCollection.showNextProject);
-      // projectCloseButton.addEventListener("click", workCollection.closeProject);
+      projectNextButton.addEventListener("click", workCollection.showNextProject);
+      projectCloseButton.addEventListener("click", workCollection.closeProject);
       // check works events
       projectRoulette.addEventListener("click", function() { workCollection.sendWorkSignal(projectRoulette.id);});
       projectBaccarat.addEventListener("click", function() { workCollection.sendWorkSignal(projectBaccarat.id);});
@@ -46,10 +46,14 @@ var mySite = (function(global) {
 
     animationHandlers: function() {
       entrance.addEventListener("animationend", function(e) {
+        // entranceAnimation1:
+        // animation of scaling down circle size at home page
         if(e.animationName == "entranceAnimation1") {
           document.getElementById("entranceArrow").classList.add("entranceAnimation2");
         }
 
+        // entranceAnimation2:
+        // arrow animation at home page
         if(e.animationName == "entranceAnimation2") {
           document.getElementById("homePage").style.display = "none";
           document.getElementById("mainContent").style.display = "block";
@@ -85,19 +89,19 @@ var mySite = (function(global) {
 
     openMenu: function() {
       mainNavigation.mainNavButtonFlag = !mainNavigation.mainNavButtonFlag;
-      console.log("mainNavigation.mainNavButtonFlag: " + mainNavigation.mainNavButtonFlag);
       if(mainNavigation.mainNavButtonFlag) {
+        mainNavButton.style.backgroundColor = "rgb(184, 4, 200)";
         document.getElementById("mainNav").classList.add("showMainNav");
         document.getElementById("mainNav").classList.remove("closeMainNav");
       }
       else {
+        mainNavButton.style.backgroundColor = "transparent";
         document.getElementById("mainNav").classList.remove("showMainNav");
         document.getElementById("mainNav").classList.add("closeMainNav");
       }
     },
 
     goToHomePage: function() {
-      console.log("function: goToHomePage");
       navAboutPage.classList.add("fadeInNavItem");
       navWorkPage.classList.add("fadeInNavItem");
       setTimeout(function() {
@@ -140,12 +144,12 @@ var mySite = (function(global) {
   }
 
   var workCollection = {
-        stateIndex: 0,
-         workState: null,
-         workArray: ["roulette", "baccarat", "zootopia", "sicbo"],
-       projectInfo: document.getElementById("projectInfo"),
-    projectFeature: document.getElementById("projectFeature"),
-       projectTech: document.getElementById("projectTech"),
+                stateIndex: 0,
+                 workState: null,
+                 workArray: ["roulette", "baccarat", "zootopia", "sicbo"],
+               projectInfo: document.getElementById("projectInfo"),
+       projectResponsibilities: document.getElementById("projectResponsibilities"),
+               projectTech: document.getElementById("projectTech"),
 
     showNextProject: function() {
       if(workCollection.stateIndex + 1 == workCollection.workArray.length) {
@@ -154,7 +158,6 @@ var mySite = (function(global) {
       else {
         workCollection.stateIndex += 1;
       }
-      console.log("workCollection.stateIndex: " + workCollection.stateIndex);
       workCollection.clearProject();
       workCollection.sendWorkSignal(workCollection.workArray[workCollection.stateIndex]);
     },
@@ -177,13 +180,13 @@ var mySite = (function(global) {
 
     clearProject: function() {
       document.getElementById("projectInfo").innerHTML = "";
-      document.getElementById("projectFeature").innerHTML = "";
+      document.getElementById("projectResponsibilities").innerHTML = "";
       document.getElementById("projectTech").innerHTML = "";
     },
 
     sendWorkSignal: function(project) {
+      // project: project name
       workCollection.workState = project;
-      console.log("workCollection.workState: " + workCollection.workState);
       // send message to server side with socket
       if(workCollection.workState == "roulette") {
         socket.emit("roulette");
@@ -213,17 +216,17 @@ var mySite = (function(global) {
       workCollection.projectInfo.appendChild(projectInfoText);
 
 
-      var projectFeatureTitle = document.createElement("h3");
-      var projectFeatureList = document.createElement("ul");
-      projectFeatureTitle.innerHTML = "Feature";
-      projectFeatureList.classList.add("project__featureList");
-      for(var i = 0 ; i < msg.data.feature.length ; i++) {
+      var projectResponsibilitiesTitle = document.createElement("h3");
+      var projectResponsibilitiesList = document.createElement("ul");
+      projectResponsibilitiesTitle.innerHTML = "Responsibilities";
+      projectResponsibilitiesList.classList.add("project__featureList");
+      for(var i = 0 ; i < msg.data.responsibilities.length ; i++) {
         var list = document.createElement("li");
-        list.innerHTML = msg.data.feature[i];
-        projectFeatureList.appendChild(list);
+        list.innerHTML = msg.data.responsibilities[i];
+        projectResponsibilitiesList.appendChild(list);
       }
-      workCollection.projectFeature.appendChild(projectFeatureTitle);
-      workCollection.projectFeature.appendChild(projectFeatureList);
+      workCollection.projectResponsibilities.appendChild(projectResponsibilitiesTitle);
+      workCollection.projectResponsibilities.appendChild(projectResponsibilitiesList);
 
 
       var projectTechTitle = document.createElement("h3");
@@ -243,7 +246,6 @@ var mySite = (function(global) {
   // initialize settings
   var initialize = function() {
     eventListener.clickHandlers();
-    // eventListener.mobileHandlers();
     eventListener.animationHandlers();
     openSocket();
   }

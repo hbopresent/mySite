@@ -4,7 +4,7 @@ var http = require("http").Server(app);
 var projectData = require("./views/js/project.js");
 var io = require("socket.io")(http);
 
-
+// open socket
 io.on("connection", function(socket) {
   // send back data to client side
   socket.on("roulette", function() {
@@ -21,7 +21,7 @@ io.on("connection", function(socket) {
   });
 });
 
-
+// set path for server side
 app.use("/views", express.static(__dirname + "/views/"));
 
 app.get("/", function(req, res) {

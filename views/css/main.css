@@ -84,32 +84,34 @@ body,
       border-right: 2px solid black;
       transform: rotate(45deg);
       position: absolute;
-      left: calc((100% - 30px) / 2.1);
+      left: calc((100% - 45px) / 2);
       top: 35px;
       transition: left 0.3s ease;
     }
-  .entranceAnimation1 {
-    animation: entranceAnimation1 0.3s ease 1 forwards;
-  }
-  @keyframes entranceAnimation1 {
-    0% {
-      transform: scale(1, 1);
+    /**************  entrance animation1 at home page  ****************/
+    .entranceAnimation1 {
+      animation: entranceAnimation1 0.3s ease 1 forwards;
     }
-    100% {
-      transform: scale(0, 0);
+    @keyframes entranceAnimation1 {
+      0% {
+        transform: scale(1, 1);
+      }
+      100% {
+        transform: scale(0, 0);
+      }
     }
-  }
-  .entranceAnimation2 {
-    animation: entranceAnimation2 0.3s ease 1 forwards;
-  }
-  @keyframes entranceAnimation2 {
-    0% {
-      left: calc((100% - 30px) / 2.1);
+    /**************  entrance animation2 at home page  ****************/
+    .entranceAnimation2 {
+      animation: entranceAnimation2 0.3s ease 1 forwards;
     }
-    100% {
-      left: 100%;
+    @keyframes entranceAnimation2 {
+      0% {
+        left: calc((100% - 45px) / 2);
+      }
+      100% {
+        left: 100%;
+      }
     }
-  }
 
 
 
@@ -140,6 +142,7 @@ body,
   border: 2px rgb(184, 4, 200) solid;
   border-radius: 10px;
   background-color: transparent;
+  transition: background-color 0.3s ease;
   position: fixed;
   right: 20px;
   top: 20px;
@@ -157,6 +160,7 @@ body,
   transition: left 0.3s ease-out;
   /*display: none;*/
 }
+/**************  slide in main navigation  ****************/
 .showMainNav {
   animation: showMainNav 0.3s 1 ease-out forwards;
 }
@@ -174,6 +178,7 @@ body,
     left: 0%;
   }
 }
+/**************  slide out main navigation  ****************/
 .closeMainNav {
   animation: closeMainNav 0.3s 1 ease-out forwards;
 }
@@ -261,12 +266,6 @@ body,
     font-size: 5em;
     margin-top: 30px;
   }
-  /*.aboutContent__skills {
-    width: 100%;
-    height: 50%;
-    margin-left: auto;
-    margin-right: auto;
-  }*/
 
   /**  aboutContent__skills GRID SYSTEM  **/
   .aboutContent__skills--container {
@@ -279,14 +278,12 @@ body,
       content: "";
       margin-left: auto;
       margin-right: auto;
-      /*background-color: green;*/
     }
       .aboutContent__skills--column {
         width: 100%;
         padding-left: 12px;
         padding-right: 12px;
         margin-top: 50px;
-        /*background-color: orange;*/
       }
       @media screen and (min-width:34em) {
         .aboutContent__skills--column {
@@ -304,7 +301,6 @@ body,
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
-    /*background-color: red;*/
   }
 
   @media screen and (min-width:34.1em) and (max-width: 48em) {
@@ -352,24 +348,6 @@ body,
     }
   }
 
-  /*@media screen and (min-width: 48em) {
-    .aboutContent {
-      width: 60%;
-    }
-    .aboutContent__personalInfo {
-      position: absolute;
-      right: 0%;
-      width: 50%;
-    }
-    .personalPic {
-      width: 200px;
-      height: 300px;
-      border-radius: 0;
-    }
-    .aboutContent__introduction {
-      width: 300px;
-    }
-  }*/
 
 
 
@@ -377,33 +355,6 @@ body,
 /*------------------------------------*\
     $WORK-CONTENT
 \*------------------------------------*/
-/*.workContent {
-  width: 100%;
-  height: 100%;
-  display: none;
-}
-  .workContent--title {
-    text-align: center;
-    font-size: 5em;
-    margin-top: 30px;
-  }
-  .workContent__project {
-    width: 100%;
-    height: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-    .roulette {
-      width: 100%;
-      height: 200px;
-      background-color: rgba(247, 99, 99, 0.86);
-    }
-    h1 {
-      margin: 0;
-    }*/
-
 /*****************  main content grid  ********************/
 .workContent--container {
   width: 100%;
@@ -500,125 +451,65 @@ body,
   margin-left: auto;
   margin-right: auto;
   transition: opacity 0.5s ease;
-  position: absolute;
-  top: 0%;
-  left: 5%;
   display: none;
 }
-/*.workContentDetail__nav {
-  width: 100%;
-  height: 30px;
-  margin-top: 100px;
-  margin-bottom: 20px;
-  margin-left: auto;
-  margin-right: auto;
-}*/
-  .projectList {
+  .workContentDetail__nav {
     width: 100%;
-    margin: 0;
-    padding: 0;
+    height: 30px;
+    margin-top: 100px;
+    margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
-    .projectList__option {
-      list-style: none;
+    .workContentDetailList {
+      width: 100%;
+      height: 100%;
+      position: relative;
       display: flex;
-      cursor: pointer;
+      justify-content: space-between;
+      align-items: center;
     }
-      /*.previousButton {
+      .previousButton {
         width: 30px;
         height: 30px;
         border-top: 3px solid black;
         border-right: 3px solid black;
         transform: rotate(225deg);
-        position: absolute;
-        left: 0%;
-        top: 0%;
-      }*/
-      /*.nextButton {
+      }
+      .nextButton {
         width: 30px;
         height: 30px;
         border-top: 3px solid black;
         border-right: 3px solid black;
         transform: rotate(45deg);
-        position: absolute;
-        right: 0%;
-        top: 0%;
-      }*/
-      /*.closeButtonWrap {
+      }
+      .closeButtonWrap {
         width: 50px;
         height: 50px;
-        position: absolute;
-        left: calc((100% - 50px) / 2);
-        top: 31%;
-      }*/
-        .closeBar {
-          width: 50px;
-          height: 3px;
-          background-color: black;
-          /*position: absolute;*/
+        position: relative;
+        top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+        .leftCloseLine {
+          width: 30px;
+          height: 30px;
+          border-top: 3px solid black;
+          border-right: 3px solid black;
+          transform: rotate(225deg);
+          position: absolute;
+          left: 29px;
         }
-        .rightBar {
+        .rightCloseLine {
+          width: 30px;
+          height: 30px;
+          border-top: 3px solid black;
+          border-right: 3px solid black;
           transform: rotate(45deg);
+          position: absolute;
+          right: 29px;
         }
-        .leftBar {
-          transform: rotate(135deg);
-        }
-
-
-.workContentDetail__nav {
-  width: 100%;
-  height: 30px;
-  margin-top: 100px;
-  margin-bottom: 20px;
-  margin-left: auto;
-  margin-right: auto;
-}
-  .workContentDetailList {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-    .previousButton {
-      width: 30px;
-      height: 30px;
-      border-top: 3px solid black;
-      border-right: 3px solid black;
-      transform: rotate(225deg);
-    }
-    .nextButton {
-      width: 30px;
-      height: 30px;
-      border-top: 3px solid black;
-      border-right: 3px solid black;
-      transform: rotate(45deg);
-    }
-    .closeButtonWrap {
-      width: 50px;
-      height: 50px;
-    }
-      .leftCloseLine {
-        width: 30px;
-        height: 30px;
-        border-top: 3px solid black;
-        border-right: 3px solid black;
-        transform: rotate(225deg);
-        position: absolute;
-      }
-      .rightCloseLine {
-        width: 30px;
-        height: 30px;
-        border-top: 3px solid black;
-        border-right: 3px solid black;
-        transform: rotate(45deg);
-        position: absolute;
-      }
 
 
 
@@ -670,7 +561,7 @@ body,
     .project--info {
       margin-top: 50px;
     }
-    .project--feature {
+    .project--responsibility {
       margin-top: 50px;
     }
     .project--tech {
@@ -694,7 +585,7 @@ body,
       }
       @media screen and (min-width:34em) {
         .project--info,
-        .project--feature,
+        .project--responsibility,
         .project--tech,
         .project--video {
           margin-top: 150px;
