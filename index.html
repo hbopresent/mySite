@@ -8,7 +8,7 @@
     <script src="/socket.io/socket.io.js"></script>
   </head>
   <body>
-    <div class="mySite">
+    <div class="mySite" id="mySite">
       <!-- Home Page -->
       <div class="mySite__homePage" id="homePage">
         <div class="mySite__homePage__content">
@@ -40,10 +40,10 @@
           <div class="aboutContent__personalInfo">
             <div class="personalPic"></div>
             <div class="personalMedia">
-              <a class="mediaItem personalMedia--facebook" href="###" target="_blank"></a>
-              <a class="mediaItem personalMedia--instagram" href="###" target="_blank"></a>
-              <a class="mediaItem personalMedia--linkedin" href="###" target="_blank"></a>
-              <a class="mediaItem personalMedia--github" href="###" target="_blank"></a>
+              <a class="mediaItem personalMedia--facebook" href="https://www.facebook.com/ChengHungFranklin" target="_blank">facebook</a>
+              <a class="mediaItem personalMedia--instagram" href="https://www.instagram.com/hbopresent/?hl=en" target="_blank">instagram</a>
+              <a class="mediaItem personalMedia--linkedin" href="https://tw.linkedin.com/in/franklinhung" target="_blank">linkedin</a>
+              <a class="mediaItem personalMedia--github" href="https://github.com/hbopresent" target="_blank">github</a>
             </div>
           </div>
           <p class="aboutContent__introduction">
@@ -135,6 +135,13 @@
               <div class="nextButton" id="projectNextButton"></div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="loadingAnimation" id="loadingAnimation">
+        <div class="spinner" id="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
         </div>
       </div>
     </div>

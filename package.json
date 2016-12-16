@@ -1,0 +1,28 @@
+{
+  "name": "mysite",
+  "version": "1.0.0",
+  "description": "frankling's personal site",
+  "main": "startServer.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "io": "^0.1.10",
+    "socket.io": "^1.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hbopresent/mySite.git"
+  },
+  "keywords": [
+    "franklin"
+  ],
+  "author": "franklin hung",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hbopresent/mySite/issues"
+  },
+  "homepage": "https://github.com/hbopresent/mySite#readme"
+}

@@ -1,6 +1,6 @@
 var socket = io();
 var mySite = (function(global) {
-
+  // invokes DOM
   var homePage           = document.getElementById("homePage");
   var mainContent        = document.getElementById("mainContent");
   var aboutContent       = document.getElementById("aboutContent");
@@ -19,6 +19,8 @@ var mySite = (function(global) {
   var projectRoulette    = document.getElementById("roulette");
   var projectBaccarat    = document.getElementById("baccarat");
   var projectZootopia    = document.getElementById("zootopia");
+  var projectSicbo       = document.getElementById("sicbo");
+  var loadingAnimation   = document.getElementById("loadingAnimation");
 
 
   // setting and binding whole handlers here
@@ -28,20 +30,19 @@ var mySite = (function(global) {
       navHomePage.addEventListener("click", mainNavigation.goToHomePage);
       navAboutPage.addEventListener("click", mainNavigation.goToAboutPage);
       navWorkPage.addEventListener("click", mainNavigation.goToWorkPage);
-
       // entrance events of homepage
       entrance.addEventListener("click", function() {
         document.getElementById("mainContentEntrance").classList.add("entranceAnimation1");
       });
-
       // works navbar events
-      projectPrevButton.addEventListener("click", workCollection.showPrevProject);
+      projectPrevButton.addEventListener("click", workCollection.showPrevPjoject);
       projectNextButton.addEventListener("click", workCollection.showNextProject);
       projectCloseButton.addEventListener("click", workCollection.closeProject);
       // check works events
       projectRoulette.addEventListener("click", function() { workCollection.sendWorkSignal(projectRoulette.id);});
       projectBaccarat.addEventListener("click", function() { workCollection.sendWorkSignal(projectBaccarat.id);});
       projectZootopia.addEventListener("click", function() { workCollection.sendWorkSignal(projectZootopia.id);});
+      projectSicbo.addEventListener("click", function() { workCollection.sendWorkSignal(projectSicbo.id);});
     },
 
     animationHandlers: function() {
@@ -77,10 +78,30 @@ var mySite = (function(global) {
 
   // open socket
   var openSocket = function() {
-    socket.on("rouletteWork", function(msg) { workCollection.showProjectDetail(msg)});
-    socket.on("baccaratWork", function(msg) { workCollection.showProjectDetail(msg)});
-    socket.on("zootopiaWork", function(msg) { workCollection.showProjectDetail(msg)});
-    socket.on("sicboWork", function(msg) { workCollection.showProjectDetail(msg)});
+    socket.on("rouletteWork", function(msg) {
+      setTimeout(function() {
+        loadingAnimation.style.display = "none";
+        workCollection.showProjectDetail(msg);
+      }, 2000);
+    });
+    socket.on("baccaratWork", function(msg) {
+      setTimeout(function() {
+        loadingAnimation.style.display = "none";
+        workCollection.showProjectDetail(msg);
+      }, 2000);
+    });
+    socket.on("zootopiaWork", function(msg) {
+      setTimeout(function() {
+        loadingAnimation.style.display = "none";
+        workCollection.showProjectDetail(msg);
+      }, 2000);
+    });
+    socket.on("sicboWork", function(msg) {
+      setTimeout(function() {
+        loadingAnimation.style.display = "none";
+        workCollection.showProjectDetail(msg);
+      }, 2000);
+    });
   }
 
 
@@ -163,7 +184,7 @@ var mySite = (function(global) {
     },
 
     showPrevPjoject: function() {
-      if(workCollection.stateIndex - 1 == workCollection.workArray.length) {
+      if(workCollection.stateIndex - 1 < 0) {
         workCollection.stateIndex = workCollection.workArray.length - 1;
       }
       else {
@@ -174,8 +195,10 @@ var mySite = (function(global) {
     },
 
     closeProject: function() {
+      workCollection.stateIndex = 0;
       document.getElementById("workContentDetail").style.display = "none";
       document.getElementById("workContent").style.display = "block";
+      workCollection.clearProject();
     },
 
     clearProject: function() {
@@ -185,6 +208,7 @@ var mySite = (function(global) {
     },
 
     sendWorkSignal: function(project) {
+      loadingAnimation.style.display = "flex";
       // project: project name
       workCollection.workState = project;
       // send message to server side with socket
@@ -204,6 +228,7 @@ var mySite = (function(global) {
 
     showProjectDetail: function(msg) {
       document.getElementById("workContentDetail").style.display = "block";
+      document.body.scrollTop = 0;
       document.getElementById("workContent").style.display = "none";
 
       // update project data (rerender UI)
